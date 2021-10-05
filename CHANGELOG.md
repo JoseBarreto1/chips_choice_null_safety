@@ -1,3 +1,7 @@
+## [2.0.1] - 2021-10-05
+- Added Null Safety
+- Original Project: https://github.com/davigmacode/flutter_chips_choice
+
 ## [2.0.0] - 2020-10-09
 
 * The `options` parameter is changed to `choiceItems`
