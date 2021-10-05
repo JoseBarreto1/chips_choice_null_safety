@@ -4,6 +4,10 @@
 
 Lite version of [smart_select](https://pub.dev/packages/smart_select) package, zero dependencies, an easy way to provide a single or multiple choice chips.
 
+## What's New in Version 2.0.1
+- Added Null Safety
+- Original Project: https://github.com/davigmacode/flutter_chips_choice
+
 ## What's New in Version 2.x.x
 
 - Added parameter `ChipsChoice.choiceloader` to easily load async choice items
