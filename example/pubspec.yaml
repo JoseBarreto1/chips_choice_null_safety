@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  chips_choice:
+  chips_choice_null_safety:
     path: ../
   dio: ^3.0.7
 

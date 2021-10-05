@@ -1,4 +1,4 @@
-import 'package:chips_choice/src/model/choice_style.dart';
+import 'package:chips_choice_null_safety/src/model/choice_style.dart';
 import 'package:flutter/material.dart';
 import 'model/choice_style.dart';
 import 'model/choice_item.dart';
