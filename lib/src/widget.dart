@@ -409,13 +409,13 @@ class ChipsChoiceState<T> extends State<ChipsChoice<T>> {
             C2Chip(
               data: item,
               style: defaultChoiceStyle
-                  .merge(widget.choiceStyle != null? widget.choiceStyle! : C2ChoiceStyle(color: Colors.grey))
+                  .merge(widget.choiceStyle != null? widget.choiceStyle! : C2ChoiceStyle(color: Colors.red))
                   .merge(item.style != null? item.style! : C2ChoiceStyle(color: Colors.grey)),
               activeStyle: defaultActiveChoiceStyle
-                  .merge(widget.choiceStyle != null? widget.choiceStyle! : C2ChoiceStyle(color: Colors.grey))
+                  .merge(widget.choiceStyle != null? widget.choiceStyle! : C2ChoiceStyle(color: Colors.red))
                   .merge(item.style != null? item.style! : C2ChoiceStyle(color: Colors.grey))
-                  .merge(widget.choiceActiveStyle != null? widget.choiceActiveStyle! : C2ChoiceStyle(color: Colors.grey))
-                  .merge(item.activeStyle != null? item.activeStyle! : C2ChoiceStyle(color: Colors.grey)),
+                  .merge(widget.choiceActiveStyle != null? widget.choiceActiveStyle! : C2ChoiceStyle(color: Colors.grey[800]))
+                  .merge(item.activeStyle != null? item.activeStyle! : C2ChoiceStyle(color: Colors.green)),
               label: widget.choiceLabelBuilder?.call(item),
               avatar: widget.choiceAvatarBuilder?.call(item),
             );

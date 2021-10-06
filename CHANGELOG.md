@@ -1,3 +1,6 @@
+## [2.0.1] - 2021-10-06
+- Adjusted style
+
 ## [2.0.1] - 2021-10-05
 - Added Null Safety
 - Original Project: https://github.com/davigmacode/flutter_chips_choice
