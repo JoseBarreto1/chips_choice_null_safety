@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class C2ChoiceStyle {
 
   /// Item color
-  final Color? color;
+  final Color color;
 
   /// choice item margin
   final EdgeInsetsGeometry? margin;
@@ -85,7 +85,7 @@ class C2ChoiceStyle {
 
   /// Default Constructor
   const C2ChoiceStyle({
-    this.color,
+    required this.color,
     this.margin,
     this.padding,
     this.elevation,

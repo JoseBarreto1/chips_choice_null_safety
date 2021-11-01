@@ -1,3 +1,7 @@
+## [2.0.3] - 2021-10-06
+- Adjusted style
+- bug fixes
+
 ## [2.0.1] - 2021-10-06
 - Adjusted style
 

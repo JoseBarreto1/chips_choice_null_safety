@@ -14,7 +14,7 @@ class ChipsChoice<T> extends StatefulWidget {
   final C2ChoiceLoader<T>? choiceLoader;
 
   /// Choice unselected item style
-  final C2ChoiceStyle? choiceStyle;
+  final C2ChoiceStyle choiceStyle;
 
   /// Choice selected item style
   final C2ChoiceStyle? choiceActiveStyle;
@@ -107,9 +107,9 @@ class ChipsChoice<T> extends StatefulWidget {
   final double? spinnerThickness;
 
   final T? _value;
-  final List<T>? _values = [];
+  final List<T>? _values;
   final C2Changed<T>? _onChangedSingle;
-  //final C2Changed<List<T>>? _onChangedMultiple = [] as C2Changed<List<T>>?;
+  final C2Changed<List<T>>? _onChangedMultiple;
   final bool _isMultiChoice;
 
   /// Costructor for single choice
@@ -119,7 +119,7 @@ class ChipsChoice<T> extends StatefulWidget {
     required C2Changed<T> onChanged,
     required this.choiceItems,
     this.choiceLoader,
-    this.choiceStyle,
+    required this.choiceStyle,
     this.choiceActiveStyle,
     this.choiceLabelBuilder,
     this.choiceAvatarBuilder,
@@ -158,6 +158,8 @@ class ChipsChoice<T> extends StatefulWidget {
         assert(wrapped != null),
         _isMultiChoice = false,
         _value = value,
+        _values = null,
+        _onChangedMultiple = null,
         _onChangedSingle = onChanged,
         super(key: key);
 
@@ -168,7 +170,7 @@ class ChipsChoice<T> extends StatefulWidget {
     required C2Changed<List<T>> onChanged,
     required this.choiceItems,
     this.choiceLoader,
-    this.choiceStyle,
+    required this.choiceStyle,
     this.choiceActiveStyle,
     this.choiceLabelBuilder,
     this.choiceAvatarBuilder,
@@ -203,12 +205,11 @@ class ChipsChoice<T> extends StatefulWidget {
           choiceItems != null || choiceLoader != null,
           'One of the parameters must be provided',
         ),
-        assert(onChanged != null),
-        assert(wrapped != null),
         _value = null,
+        _values = value,
         _onChangedSingle = null,
         _isMultiChoice = true,
-        //_onChangedMultiple = onChanged,
+        _onChangedMultiple = onChanged,
         super(key: key);
 
   /// default padding for scrollable list
@@ -404,18 +405,18 @@ class ChipsChoiceState<T> extends State<ChipsChoice<T>> {
           : widget._value == choiceItems![i].value,
       select: _select(choiceItems![i].value),
     );
-    if ((item.hidden != null && item.hidden == false)) {
+    if ((item.hidden == false)) {
       return widget.choiceBuilder?.call(item) ??
             C2Chip(
               data: item,
               style: defaultChoiceStyle
-                  .merge(widget.choiceStyle != null? widget.choiceStyle! : C2ChoiceStyle(color: Colors.red))
+                  .merge(widget.choiceStyle)
                   .merge(item.style != null? item.style! : C2ChoiceStyle(color: Colors.grey)),
               activeStyle: defaultActiveChoiceStyle
-                  .merge(widget.choiceStyle != null? widget.choiceStyle! : C2ChoiceStyle(color: Colors.red))
+                  .merge(widget.choiceStyle)
                   .merge(item.style != null? item.style! : C2ChoiceStyle(color: Colors.grey))
-                  .merge(widget.choiceActiveStyle != null? widget.choiceActiveStyle! : C2ChoiceStyle(color: Colors.grey[800]))
-                  .merge(item.activeStyle != null? item.activeStyle! : C2ChoiceStyle(color: Colors.green)),
+                  .merge(widget.choiceActiveStyle != null? widget.choiceActiveStyle! : C2ChoiceStyle(color: Colors.grey))
+                  .merge(item.activeStyle != null? item.activeStyle! : C2ChoiceStyle(color: widget.choiceStyle.color)),
               label: widget.choiceLabelBuilder?.call(item),
               avatar: widget.choiceAvatarBuilder?.call(item),
             );
@@ -427,14 +428,16 @@ class ChipsChoiceState<T> extends State<ChipsChoice<T>> {
   /// return the selection function
   Function(bool selected) _select(T value) {
     return (bool selected) {
+      print(selected);
       if (widget._isMultiChoice) {
         List<T> values = List.from(widget._values ?? []);
+        print(values);
         if (selected) {
           values.add(value);
         } else {
           values.remove(value);
         }
-        //widget._onChangedMultiple?.call(values);
+        widget._onChangedMultiple?.call(values);
       } else {
         widget._onChangedSingle?.call(value);
       }
