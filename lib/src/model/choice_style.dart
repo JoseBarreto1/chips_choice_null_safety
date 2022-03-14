@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 /// Choice item style configuration
 class C2ChoiceStyle {
-
   /// Item color
   final Color color;
+
+  final Color? backgroundColor;
+
+  final Color? selectedBackgroundColor;
 
   /// choice item margin
   final EdgeInsetsGeometry? margin;
@@ -86,6 +89,8 @@ class C2ChoiceStyle {
   /// Default Constructor
   const C2ChoiceStyle({
     required this.color,
+    this.backgroundColor,
+    this.selectedBackgroundColor,
     this.margin,
     this.padding,
     this.elevation,
@@ -114,6 +119,8 @@ class C2ChoiceStyle {
   /// the given fields replaced with the new values.
   C2ChoiceStyle copyWith({
     Color? color,
+    Color? backgroundColor,
+    Color? selectedBackgroundColor,
     EdgeInsetsGeometry? margin,
     EdgeInsetsGeometry? padding,
     double? elevation,
@@ -139,6 +146,9 @@ class C2ChoiceStyle {
   }) {
     return C2ChoiceStyle(
       color: color ?? this.color,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      selectedBackgroundColor:
+          selectedBackgroundColor ?? this.selectedBackgroundColor,
       margin: margin ?? this.margin,
       padding: padding ?? this.padding,
       elevation: elevation ?? this.elevation,
@@ -159,7 +169,8 @@ class C2ChoiceStyle {
       avatarBorderStyle: avatarBorderStyle ?? this.avatarBorderStyle,
       avatarBorderShape: avatarBorderShape ?? this.avatarBorderShape,
       clipBehavior: clipBehavior ?? this.clipBehavior,
-      materialTapTargetSize: materialTapTargetSize ?? this.materialTapTargetSize,
+      materialTapTargetSize:
+          materialTapTargetSize ?? this.materialTapTargetSize,
       disabledColor: disabledColor ?? this.disabledColor,
     );
   }
@@ -172,6 +183,9 @@ class C2ChoiceStyle {
 
     return copyWith(
       color: other.color,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      selectedBackgroundColor:
+          selectedBackgroundColor ?? this.selectedBackgroundColor,
       margin: other.margin,
       padding: other.padding,
       elevation: other.elevation,
@@ -185,7 +199,7 @@ class C2ChoiceStyle {
       borderWidth: other.borderWidth,
       borderRadius: other.borderRadius,
       borderStyle: other.borderStyle,
-      //borderShape: other.borderShape,
+      borderShape: other.borderShape,
       avatarBorderColor: other.avatarBorderColor,
       avatarBorderWidth: other.avatarBorderWidth,
       avatarBorderRadius: other.avatarBorderRadius,

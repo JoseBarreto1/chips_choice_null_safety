@@ -1,3 +1,7 @@
+## [2.0.3] - 2022-03-14
+- Adjusted style, to change style: border and color.
+- bug fixes
+
 ## [2.0.3] - 2021-11-01
 - Adjusted style
 - bug fixes

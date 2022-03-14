@@ -4,7 +4,6 @@ import 'model/choice_style.dart';
 
 /// Default choice item widget
 class C2Chip<T> extends StatelessWidget {
-
   /// choice item data
   final C2Choice<T> data;
 
@@ -21,7 +20,7 @@ class C2Chip<T> extends StatelessWidget {
   final Widget? avatar;
 
   /// default constructor
-  const C2Chip({
+  C2Chip({
     Key? key,
     required this.data,
     required this.style,
@@ -38,36 +37,30 @@ class C2Chip<T> extends StatelessWidget {
     BorderStyle? style,
   }) {
     final BorderSide side = BorderSide(
-      color: color,
-      width: width ?? 1.0,
-      style: style ?? BorderStyle.solid
-    );
+        color: color, width: width ?? 1.0, style: style ?? BorderStyle.solid);
     return radius == null
-      ? StadiumBorder(side: side)
-      : RoundedRectangleBorder(
-          borderRadius: radius,
-          side: side,
-        );
+        ? StadiumBorder(side: side)
+        : RoundedRectangleBorder(
+            borderRadius: radius,
+            side: side,
+          );
   }
 
   /// get shape border
-  static OutlinedBorder  getAvatarShapeBorder({
+  static OutlinedBorder getAvatarShapeBorder({
     required Color color,
     double? width,
     BorderRadiusGeometry? radius,
     BorderStyle? style,
   }) {
     final BorderSide side = BorderSide(
-      color: color != null ? color : const Color(0xFF000000),
-      width: width ?? 1.0,
-      style: style ?? BorderStyle.none
-    );
+        color: color, width: width ?? 1.0, style: style ?? BorderStyle.solid);
     return radius == null
-      ? CircleBorder(side: side)
-      : RoundedRectangleBorder(
-          borderRadius: radius,
-          side: side,
-        );
+        ? CircleBorder(side: side)
+        : RoundedRectangleBorder(
+            borderRadius: radius,
+            side: side,
+          );
   }
 
   /// default border opacity
@@ -75,48 +68,42 @@ class C2Chip<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final C2ChoiceStyle effectiveStyle = data.selected
-      ? activeStyle
-      : style;
+    final C2ChoiceStyle effectiveStyle = data.selected ? activeStyle : style;
 
     final bool isDark = effectiveStyle.brightness == Brightness.dark;
 
-    final Color? textColor = isDark
-      ? const Color(0xFFFFFFFF)
-      : effectiveStyle.color;
-
-    final Color? borderColor = isDark
-      ? const Color(0x00000000)
-      : textColor!.withOpacity(effectiveStyle.borderOpacity ?? defaultBorderOpacity);
-
-    final Color? checkmarkColor = isDark
-      ? textColor
-      : activeStyle.color;
-
     final Color? backgroundColor = isDark
-      ? style.color
-      : const Color(0x00000000);
+        ? Colors.black
+        : (effectiveStyle.backgroundColor ?? Colors.grey[100]);
+
+    final Color borderColor =
+        isDark ? Colors.black : (effectiveStyle.borderColor ?? Colors.white);
+
+    final Color? textColor = isDark ? Colors.white : effectiveStyle.color;
+
+    final Color? checkmarkColor = isDark ? textColor : activeStyle.color;
 
     final Color? selectedBackgroundColor = isDark
-      ? activeStyle.color
-      : const Color(0x00000000);
+        ? Colors.black
+        : (effectiveStyle.selectedBackgroundColor ?? Colors.grey[100]);
 
     return Padding(
-      padding: effectiveStyle.margin != null? effectiveStyle.margin! : const EdgeInsets.symmetric(vertical: 4),
+      padding: effectiveStyle.margin != null
+          ? effectiveStyle.margin!
+          : EdgeInsets.symmetric(vertical: 4),
       child: RawChip(
         padding: effectiveStyle.padding,
         label: label ?? Text(data.label),
-        labelStyle: TextStyle(color: textColor).merge(effectiveStyle.labelStyle),
+        labelStyle:
+            TextStyle(color: textColor).merge(effectiveStyle.labelStyle),
         labelPadding: effectiveStyle.labelPadding,
         avatar: avatar,
-        avatarBorder: effectiveStyle.avatarBorderShape ?? getAvatarShapeBorder(
-          color: const Color(0xFF000000),
-          width: effectiveStyle.avatarBorderWidth,
-          radius: effectiveStyle.avatarBorderRadius,
-          style: effectiveStyle.avatarBorderStyle,
-        ),
+        avatarBorder: effectiveStyle.avatarBorderShape ??
+            getAvatarShapeBorder(
+              color: borderColor,
+            ),
         tooltip: data.tooltip,
-        shape: effectiveStyle.borderShape,
+        shape: effectiveStyle.borderShape ?? getShapeBorder(color: borderColor),
         clipBehavior: effectiveStyle.clipBehavior ?? Clip.none,
         elevation: effectiveStyle.elevation ?? 0,
         pressElevation: effectiveStyle.pressElevation ?? 0,
@@ -127,10 +114,12 @@ class C2Chip<T> extends StatelessWidget {
         checkmarkColor: checkmarkColor,
         showCheckmark: effectiveStyle.showCheckmark,
         materialTapTargetSize: effectiveStyle.materialTapTargetSize,
-        disabledColor: effectiveStyle.disabledColor ?? Colors.blueGrey.withOpacity(.1),
+        disabledColor:
+            effectiveStyle.disabledColor ?? Colors.blueGrey.withOpacity(.1),
         isEnabled: data.disabled != true,
         selected: data.selected,
-        onSelected: (_selected) => data.select != null? data.select!(_selected) : null,
+        onSelected: (_selected) =>
+            data.select != null ? data.select!(_selected) : null,
       ),
     );
   }

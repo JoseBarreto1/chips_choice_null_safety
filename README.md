@@ -1,8 +1,10 @@
 ![Pub Version](https://img.shields.io/pub/v/chips_choice) ![GitHub](https://img.shields.io/github/license/davigmacode/flutter_chips_choice)
 
-<a href="https://www.buymeacoffee.com/davigmacode" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="195" height="55"></a>
+An easy way to provide a single or multiple choice chips.
 
-Lite version of [smart_select](https://pub.dev/packages/smart_select) package, zero dependencies, an easy way to provide a single or multiple choice chips.
+## What's New in Version 2.0.5
+- Adjusted style, to change style: border and color.
+- bug fixes
 
 ## What's New in Version 2.0.3
 - Adjusted style
@@ -12,35 +14,9 @@ Lite version of [smart_select](https://pub.dev/packages/smart_select) package, z
 - Added Null Safety
 - Original Project: https://github.com/davigmacode/flutter_chips_choice
 
-## What's New in Version 2.x.x
-
-- Added parameter `ChipsChoice.choiceloader` to easily load async choice items
-- Easily configure unselected and selected choice style using `ChipsChoice.choiceStyle` and `ChipsChoice.choiceActiveStyle`
-- Individual choice style using `C2Choice.style` and `C2Choice.activeStyle`
-- Added scroll and text direction configuration
-- Added more custom builder
-- And many more configurations that can be seen in the [API Reference](https://pub.dev/documentation/chips_choice/latest/) and [example](https://pub.dev/packages/chips_choice#-example-tab-)
-
-## Migration from 1.4.1 to 2.0.0
-
-- The `options` parameter is changed to `choiceItems`
-- The `ChipsChoiceOption` class is changed to `C2Choice`,
-- Removed the `avatar` parameter from choice item class, instead use `ChipsChoice.choiceAvatarBuilder`
-- The `ChipsChoice.isWrapped` parameter is changed to `ChipsChoice.wrapped`
-- The `ChipsChoice.itemBuilder` parameter is changed to `ChipsChoice.choiceBuilder`
-- The `ChipsChoice.wrapAlignment` parameter is changed to `ChipsChoice.alignment`
-- The `ChipsChoice.itemConfig` parameter and `ChipsChoiceItemConfig` class is removed, instead use `C2ChoiceStyle` class with `ChipsChoice.choiceStyle` and `ChipsChoice.choiceActiveStyle`
-
-## Demo
-
 ### Preview
 
 ![Demo Preview](https://github.com/davigmacode/flutter_chips_choice/raw/master/demo/screens/screencast.gif)
-
-### Download
-
-[![Demo App](https://github.com/davigmacode/flutter_chips_choice/raw/master/demo/build/qr-apk.png "ChipsChoice Demo App")](https://github.com/davigmacode/flutter_chips_choice/raw/master/demo/build/ChipsChoice.apk)
-
 
 ## Features
 

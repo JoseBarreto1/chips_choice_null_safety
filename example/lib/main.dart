@@ -85,6 +85,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         value: (i, v) => i,
                         label: (i, v) => v,
                       ),
+                      choiceActiveStyle: C2ChoiceStyle(
+                        color: Color.fromARGB(255, 54, 57, 244),
+                        borderColor: Colors.red,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5)),
+                      ),
                       choiceStyle: C2ChoiceStyle(
                         color: Colors.red,
                         borderRadius:
@@ -114,8 +120,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         value: (i, v) => i,
                         label: (i, v) => v,
                       ),
+                      choiceActiveStyle: C2ChoiceStyle(
+                        color: Colors.red,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5)),
+                      ),
                       choiceStyle: C2ChoiceStyle(
+                        showCheckmark: false,
                         color: Colors.purple,
+                        borderColor: Color.fromARGB(255, 36, 25, 187),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(5)),
                       ),
@@ -123,8 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Content(
-                    title:
-                        'Multiplos Choices',
+                    title: 'Multiplos Choices',
                     child: ChipsChoice<String>.multiple(
                       value: tags,
                       onChanged: (val) =>
@@ -136,8 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       choiceStyle: C2ChoiceStyle(
                         color: Colors.orange,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        borderColor: Colors.red,
                       ),
                       wrapped: true,
                       textDirection: TextDirection.rtl,
@@ -156,8 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       choiceStyle: C2ChoiceStyle(
                         color: Colors.black,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        borderColor: Colors.red,
                       ),
                       wrapped: true,
                     ),
@@ -176,8 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       choiceStyle: C2ChoiceStyle(
                         color: Colors.yellow,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        borderColor: Colors.red,
                       ),
                       wrapped: true,
                     ),
@@ -189,6 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onChanged: (val) => setState(() => tag = val),
                       choiceStyle: C2ChoiceStyle(
                         color: Colors.blue,
+                        borderColor: Colors.red,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(5)),
                       ),
@@ -217,8 +227,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             const BorderRadius.all(Radius.circular(5)),
                         borderColor: Colors.blueGrey.withOpacity(.5),
                       ),
-                      choiceActiveStyle: const C2ChoiceStyle(
+                      choiceActiveStyle: C2ChoiceStyle(
                         color: Colors.orange,
+                        borderColor: Colors.red,
                         brightness: Brightness.dark,
                         borderShape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(20)),

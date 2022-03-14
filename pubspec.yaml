@@ -1,6 +1,6 @@
 name: chips_choice_null_safety
 description: Lite version of smart_select package, zero dependencies, an easy way to provide a single or multiple choice chips.
-version: 2.0.4
+version: 2.0.5
 homepage: https://github.com/JoseBarreto1/chips_choice_null_safety
 
 environment:

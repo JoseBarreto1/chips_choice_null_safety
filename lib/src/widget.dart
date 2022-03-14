@@ -244,17 +244,24 @@ class ChipsChoiceState<T> extends State<ChipsChoice<T>> {
   ThemeData get theme => Theme.of(context);
 
   /// default chip margin
-  EdgeInsetsGeometry get defaultChipMargin => (widget.wrapped != null ? widget.wrapped! : false)
-      ? ChipsChoice.defaultWrappedChipMargin
-      : ChipsChoice.defaultScrollableChipMargin;
+  EdgeInsetsGeometry get defaultChipMargin =>
+      (widget.wrapped != null ? widget.wrapped! : false)
+          ? ChipsChoice.defaultWrappedChipMargin
+          : ChipsChoice.defaultScrollableChipMargin;
 
   /// default style for unselected choice item
   C2ChoiceStyle get defaultChoiceStyle => C2ChoiceStyle(
-      margin: defaultChipMargin, color: theme.unselectedWidgetColor);
+        margin: defaultChipMargin,
+        color: theme.unselectedWidgetColor,
+        borderColor: Colors.white,
+      );
 
   /// default style for selected choice item
-  C2ChoiceStyle get defaultActiveChoiceStyle =>
-      C2ChoiceStyle(margin: defaultChipMargin, color: theme.primaryColor);
+  C2ChoiceStyle get defaultActiveChoiceStyle => C2ChoiceStyle(
+        margin: defaultChipMargin,
+        color: theme.primaryColor,
+        borderColor: Colors.white,
+      );
 
   /// get placeholder string
   String get placeholder =>
@@ -320,8 +327,12 @@ class ChipsChoiceState<T> extends State<ChipsChoice<T>> {
         ? C2Spinner(
             padding: widget.padding ?? ChipsChoice.defaultPadding,
             size: widget.spinnerSize != null ? widget.spinnerSize! : 0.0,
-            color: widget.spinnerColor != null ? widget.spinnerColor! : Colors.grey,
-            thickness: widget.spinnerThickness != null ? widget.spinnerThickness! : 0.0,
+            color: widget.spinnerColor != null
+                ? widget.spinnerColor!
+                : Colors.grey,
+            thickness: widget.spinnerThickness != null
+                ? widget.spinnerThickness!
+                : 0.0,
           )
         : choiceItems != null && choiceItems!.isNotEmpty
             ? widget.wrapped != true
@@ -331,15 +342,23 @@ class ChipsChoiceState<T> extends State<ChipsChoice<T>> {
                 ? widget.errorBuilder?.call(context) ??
                     C2Placeholder(
                       padding: widget.padding ?? ChipsChoice.defaultPadding,
-                      style: widget.errorStyle != null ? widget.errorStyle! : TextStyle(color: Colors.grey),
-                      align: widget.errorAlign != null ? widget.errorAlign! : TextAlign.center,
+                      style: widget.errorStyle != null
+                          ? widget.errorStyle!
+                          : TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                      align: widget.errorAlign != null
+                          ? widget.errorAlign!
+                          : TextAlign.center,
                       message: error.toString(),
                     )
                 : widget.placeholderBuilder?.call(context) ??
                     C2Placeholder(
                       padding: widget.padding ?? ChipsChoice.defaultPadding,
-                      style: widget.errorStyle != null ? widget.errorStyle! : TextStyle(color: Colors.grey),
-                      align: widget.errorAlign != null ? widget.errorAlign! : TextAlign.center,
+                      style: widget.errorStyle != null
+                          ? widget.errorStyle!
+                          : TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                      align: widget.errorAlign != null
+                          ? widget.errorAlign!
+                          : TextAlign.center,
                       message: placeholder,
                     );
   }
@@ -407,19 +426,18 @@ class ChipsChoiceState<T> extends State<ChipsChoice<T>> {
     );
     if ((item.hidden == false)) {
       return widget.choiceBuilder?.call(item) ??
-            C2Chip(
-              data: item,
-              style: defaultChoiceStyle
-                  .merge(widget.choiceStyle)
-                  .merge(item.style != null? item.style! : C2ChoiceStyle(color: Colors.grey)),
-              activeStyle: defaultActiveChoiceStyle
-                  .merge(widget.choiceStyle)
-                  .merge(item.style != null? item.style! : C2ChoiceStyle(color: Colors.grey))
-                  .merge(widget.choiceActiveStyle != null? widget.choiceActiveStyle! : C2ChoiceStyle(color: Colors.grey))
-                  .merge(item.activeStyle != null? item.activeStyle! : C2ChoiceStyle(color: widget.choiceStyle.color)),
-              label: widget.choiceLabelBuilder?.call(item),
-              avatar: widget.choiceAvatarBuilder?.call(item),
-            );
+          C2Chip(
+            data: item,
+            style: defaultChoiceStyle.merge(widget.choiceStyle),
+            activeStyle:
+                defaultActiveChoiceStyle.merge(widget.choiceActiveStyle ??
+                    C2ChoiceStyle(
+                      color: Colors.green,
+                      borderColor: Colors.green,
+                    )),
+            label: widget.choiceLabelBuilder?.call(item),
+            avatar: widget.choiceAvatarBuilder?.call(item),
+          );
     } else {
       return Container();
     }
@@ -531,7 +549,7 @@ class C2Placeholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? C2Placeholder.defaultPadding,
-      child: Text(message != null? message! : " ",
+      child: Text(message != null ? message! : " ",
           textAlign: align ?? C2Placeholder.defaultAlign,
           style: C2Placeholder.defaultStyle.merge(style)),
     );
