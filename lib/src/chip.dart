@@ -72,9 +72,9 @@ class C2Chip<T> extends StatelessWidget {
 
     final bool isDark = effectiveStyle.brightness == Brightness.dark;
 
-    final Color? backgroundColor = isDark
+    final Color backgroundColor = isDark
         ? Colors.black
-        : (effectiveStyle.backgroundColor ?? Colors.grey[100]);
+        : (effectiveStyle.backgroundColor ?? Colors.grey.shade100);
 
     final Color borderColor =
         isDark ? Colors.black : (effectiveStyle.borderColor ?? Colors.white);
@@ -82,10 +82,6 @@ class C2Chip<T> extends StatelessWidget {
     final Color? textColor = isDark ? Colors.white : effectiveStyle.color;
 
     final Color? checkmarkColor = isDark ? textColor : activeStyle.color;
-
-    final Color? selectedBackgroundColor = isDark
-        ? Colors.black
-        : (effectiveStyle.selectedBackgroundColor ?? Colors.grey[100]);
 
     return Padding(
       padding: effectiveStyle.margin != null
@@ -101,16 +97,21 @@ class C2Chip<T> extends StatelessWidget {
         avatarBorder: effectiveStyle.avatarBorderShape ??
             getAvatarShapeBorder(
               color: borderColor,
+              radius: effectiveStyle.borderRadius,
             ),
         tooltip: data.tooltip,
-        shape: effectiveStyle.borderShape ?? getShapeBorder(color: borderColor),
+        shape: effectiveStyle.borderShape ??
+            getShapeBorder(
+              color: borderColor,
+              radius: effectiveStyle.borderRadius,
+            ),
         clipBehavior: effectiveStyle.clipBehavior ?? Clip.none,
         elevation: effectiveStyle.elevation ?? 0,
         pressElevation: effectiveStyle.pressElevation ?? 0,
         shadowColor: style.color,
         selectedShadowColor: activeStyle.color,
         backgroundColor: backgroundColor,
-        selectedColor: selectedBackgroundColor,
+        selectedColor: backgroundColor,
         checkmarkColor: checkmarkColor,
         showCheckmark: effectiveStyle.showCheckmark,
         materialTapTargetSize: effectiveStyle.materialTapTargetSize,

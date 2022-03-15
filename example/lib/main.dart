@@ -59,16 +59,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter ChipsChoice'),
+        title: Text('Flutter ChipsChoice'),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.help_outline),
+            icon: Icon(Icons.help_outline),
             onPressed: () => {},
           )
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(5.0),
         child: Row(
           children: [
             Expanded(
@@ -88,13 +88,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       choiceActiveStyle: C2ChoiceStyle(
                         color: Color.fromARGB(255, 54, 57, 244),
                         borderColor: Colors.red,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
                       ),
                       choiceStyle: C2ChoiceStyle(
                         color: Colors.red,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
                       ),
                     ),
                   ),
@@ -122,15 +120,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       choiceActiveStyle: C2ChoiceStyle(
                         color: Colors.red,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                       choiceStyle: C2ChoiceStyle(
                         showCheckmark: false,
                         color: Colors.purple,
+                        backgroundColor: Colors.orange,
                         borderColor: Color.fromARGB(255, 36, 25, 187),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                       wrapped: true,
                     ),
@@ -139,8 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: 'Multiplos Choices',
                     child: ChipsChoice<String>.multiple(
                       value: tags,
-                      onChanged: (val) =>
-                          {print(tags), setState(() => tags = val)},
+                      onChanged: (val) => {setState(() => tags = val)},
                       choiceItems: C2Choice.listFrom<String, String>(
                         source: options,
                         value: (i, v) => v,
@@ -199,8 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       choiceStyle: C2ChoiceStyle(
                         color: Colors.blue,
                         borderColor: Colors.red,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
                       ),
                       choiceItems: C2Choice.listFrom<int, String>(
                         source: options,
@@ -222,9 +217,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       choiceStyle: C2ChoiceStyle(
                         color: Colors.black,
                         showCheckmark: false,
-                        labelStyle: const TextStyle(fontSize: 20),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        labelStyle: TextStyle(fontSize: 20),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
                         borderColor: Colors.blueGrey.withOpacity(.5),
                       ),
                       choiceActiveStyle: C2ChoiceStyle(
@@ -271,7 +265,7 @@ class _ContentState extends State<Content>
     super.build(context);
     return Card(
       elevation: 2,
-      margin: const EdgeInsets.all(5),
+      margin: EdgeInsets.all(5),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -279,11 +273,11 @@ class _ContentState extends State<Content>
         children: <Widget>[
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.all(15),
+            padding: EdgeInsets.all(15),
             color: Colors.blueGrey[50],
             child: Text(
               widget.title!,
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.blueGrey, fontWeight: FontWeight.w500),
             ),
           ),

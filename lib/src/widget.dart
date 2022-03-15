@@ -446,10 +446,8 @@ class ChipsChoiceState<T> extends State<ChipsChoice<T>> {
   /// return the selection function
   Function(bool selected) _select(T value) {
     return (bool selected) {
-      print(selected);
       if (widget._isMultiChoice) {
         List<T> values = List.from(widget._values ?? []);
-        print(values);
         if (selected) {
           values.add(value);
         } else {

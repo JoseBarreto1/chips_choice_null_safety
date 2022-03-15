@@ -128,6 +128,42 @@ Widget build(BuildContext context) {
 }
 ```
 
+Example Style
+```dart
+List<String> tags = [];
+List<String> options = [
+  'News', 'Entertainment', 'Politics',
+  'Automotive', 'Sports', 'Education',
+  'Fashion', 'Travel', 'Food', 'Tech',
+  'Science',
+];
+
+@override
+Widget build(BuildContext context) {
+  return ChipsChoice<String>.multiple(
+    value: tags,
+    onChanged: (val) => setState(() => tags = val),
+    choiceItems: C2Choice.listFrom<String, String>(
+      source: options,
+      value: (i, v) => v,
+      label: (i, v) => v,
+    ),
+    choiceActiveStyle: C2ChoiceStyle(
+      color: Colors.red,
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    choiceStyle: C2ChoiceStyle(
+      showCheckmark: false,
+      color: Colors.purple,
+      backgroundColor: Colors.orange,
+      borderColor: Color.fromARGB(255, 36, 25, 187),
+      borderRadius: BorderRadius.all(Radius.circular(15)),
+    ),
+    wrapped: true,
+  );
+}
+```
+
 ### Style Configuration
 ```dart
 // available configuration for single and multiple choice

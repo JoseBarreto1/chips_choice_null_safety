@@ -7,8 +7,6 @@ class C2ChoiceStyle {
 
   final Color? backgroundColor;
 
-  final Color? selectedBackgroundColor;
-
   /// choice item margin
   final EdgeInsetsGeometry? margin;
 
@@ -90,7 +88,6 @@ class C2ChoiceStyle {
   const C2ChoiceStyle({
     required this.color,
     this.backgroundColor,
-    this.selectedBackgroundColor,
     this.margin,
     this.padding,
     this.elevation,
@@ -120,7 +117,6 @@ class C2ChoiceStyle {
   C2ChoiceStyle copyWith({
     Color? color,
     Color? backgroundColor,
-    Color? selectedBackgroundColor,
     EdgeInsetsGeometry? margin,
     EdgeInsetsGeometry? padding,
     double? elevation,
@@ -147,8 +143,6 @@ class C2ChoiceStyle {
     return C2ChoiceStyle(
       color: color ?? this.color,
       backgroundColor: backgroundColor ?? this.backgroundColor,
-      selectedBackgroundColor:
-          selectedBackgroundColor ?? this.selectedBackgroundColor,
       margin: margin ?? this.margin,
       padding: padding ?? this.padding,
       elevation: elevation ?? this.elevation,
@@ -183,9 +177,7 @@ class C2ChoiceStyle {
 
     return copyWith(
       color: other.color,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
-      selectedBackgroundColor:
-          selectedBackgroundColor ?? this.selectedBackgroundColor,
+      backgroundColor: other.backgroundColor,
       margin: other.margin,
       padding: other.padding,
       elevation: other.elevation,
