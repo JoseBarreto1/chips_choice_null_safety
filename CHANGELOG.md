@@ -1,3 +1,6 @@
+## [2.0.6] - 2022-03-14
+- Adjusted backgroud and borderRadius style.
+
 ## [2.0.5] - 2022-03-14
 - Adjusted style, to change style: border and color.
 - bug fixes
