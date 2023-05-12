@@ -504,7 +504,7 @@ class C2Spinner extends StatelessWidget {
           child: CircularProgressIndicator(
             strokeWidth: thickness ?? C2Spinner.defaultThickness,
             valueColor: AlwaysStoppedAnimation<Color>(
-                color ?? Theme.of(context).accentColor),
+                color ?? Theme.of(context).colorScheme.secondary,),
           ),
         ),
       ),
